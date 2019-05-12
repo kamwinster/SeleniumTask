@@ -1,22 +1,27 @@
-import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.WebDriver;
+import org.junit.Test;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class YandexMarket {
-    WebDriver driver;
-    WebDriverWait wait;
+    public WebDriver driver;
 
     @Before
     public void start(){
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
-    @After
-    public void stop(){
-        driver.quit();
-        driver = null;
+    @Test
+    public void myfirsttest() {
+        driver.get("https://www.yandex.ru/");
+        driver.findElement(By.xpath(".//*[text()='Маркет']/..")).click();
+        driver.findElement(By.xpath(".//*[text()='Компьютерная техника']/..")).click();
+        driver.findElement(By.xpath(".//*[text()='Ноутбуки']/..")).click();
     }
 }
