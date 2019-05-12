@@ -5,8 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
-
 public class YandexMarket {
     public WebDriver driver;
 
